@@ -7,7 +7,7 @@ namespace Console_Snake
         public static void Main(string[] args)
         {
             GameRoot gameRoot = new GameRoot();
-            gameRoot.Start();
+            GameRoot.Start();
         }
     }
 }

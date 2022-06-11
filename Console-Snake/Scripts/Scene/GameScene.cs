@@ -7,7 +7,8 @@ namespace Console_Snake
     {
         public void Init()
         {
-            GameRoot.ChangeScene(ESceneType.End);
+            Map map = new Map();
+            map.Draw();
         }
 
         public void Update()

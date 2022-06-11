@@ -33,7 +33,7 @@ namespace Console_Snake
             ChangeScene(ESceneType.Begin);
         }
 
-        public void Start()
+        public static void Start()
         {
             while (true)
             {
@@ -41,7 +41,6 @@ namespace Console_Snake
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
 
         public static void ChangeScene(ESceneType sceneType)
         {

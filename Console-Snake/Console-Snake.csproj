@@ -41,7 +41,14 @@
     <ItemGroup>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Scripts\Component\GameObject.cs" />
+        <Compile Include="Scripts\Component\Position.cs" />
+        <Compile Include="Scripts\GameObject\Food.cs" />
+        <Compile Include="Scripts\GameObject\Map.cs" />
+        <Compile Include="Scripts\GameObject\SnakeBody.cs" />
+        <Compile Include="Scripts\GameObject\Wall.cs" />
         <Compile Include="Scripts\GameRoot.cs" />
+        <Compile Include="Scripts\Interface\IDraw.cs" />
         <Compile Include="Scripts\Interface\ILifeCycle.cs" />
         <Compile Include="Scripts\Scene\BaseScene.cs" />
         <Compile Include="Scripts\Scene\BeginScene.cs" />
