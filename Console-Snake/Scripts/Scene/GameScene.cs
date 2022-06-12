@@ -6,6 +6,7 @@ namespace Console_Snake
     {
         private Map map;
         private Snake snake;
+        private Food food;
         private int timer;
 
         public void Init()
@@ -14,15 +15,17 @@ namespace Console_Snake
             map.Draw();
             snake = new Snake(40, 9);
             snake.Draw();
+            food = new Food(snake);
         }
 
         public void Update()
         {
-            if (timer % 30000 == 0)
+            if (timer % 15000 == 0)
             {
                 snake.Move();
                 snake.Draw();
-                CheckOver();
+                snake.CheckOver(map);
+                snake.CheckFood(food);
                 timer = 0;
             }
 
@@ -47,25 +50,6 @@ namespace Console_Snake
                 case ConsoleKey.D:
                     snake.ChangeDir(EMoveDirType.Right);
                     break;
-            }
-        }
-
-        private void CheckOver()
-        {
-            for (int i = 0; i < map.Walls.Length; i++)
-            {
-                if (map.Walls[i].Position == snake.SnakeBodies[0].Position)
-                {
-                    GameRoot.ChangeScene(ESceneType.End);
-                }
-            }
-
-            for (int i = 1; i < snake.SnakeBodies.Count; i++)
-            {
-                if (snake.SnakeBodies[0].Position == snake.SnakeBodies[i].Position)
-                {
-                    GameRoot.ChangeScene(ESceneType.End);
-                }
             }
         }
     }
