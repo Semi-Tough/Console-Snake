@@ -45,6 +45,7 @@
         <Compile Include="Scripts\Component\Position.cs" />
         <Compile Include="Scripts\GameObject\Food.cs" />
         <Compile Include="Scripts\GameObject\Map.cs" />
+        <Compile Include="Scripts\GameObject\Snake.cs" />
         <Compile Include="Scripts\GameObject\SnakeBody.cs" />
         <Compile Include="Scripts\GameObject\Wall.cs" />
         <Compile Include="Scripts\GameRoot.cs" />
