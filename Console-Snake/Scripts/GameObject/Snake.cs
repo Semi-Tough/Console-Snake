@@ -15,6 +15,7 @@ namespace Console_Snake
     {
         public readonly List<SnakeBody> SnakeBodies;
         private EMoveDirType moveDirType;
+        public int MoveInterval;
 
         public Snake(int x, int y)
         {
@@ -23,6 +24,7 @@ namespace Console_Snake
                 new SnakeBody(ESnakeBodyType.Head, x, y)
             };
             moveDirType = EMoveDirType.Right;
+            MoveInterval = 500;
         }
 
         public void Draw()

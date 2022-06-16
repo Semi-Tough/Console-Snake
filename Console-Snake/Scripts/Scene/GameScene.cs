@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Console_Snake
 {
@@ -7,7 +8,7 @@ namespace Console_Snake
         private Map map;
         private Snake snake;
         private Food food;
-        private int timer;
+        private Thread thread;
 
         public void Init()
         {
@@ -16,41 +17,46 @@ namespace Console_Snake
             snake = new Snake(40, 9);
             snake.Draw();
             food = new Food(snake);
+            thread = new Thread(CheckInput)
+            {
+                IsBackground = true
+            };
+            thread.Start();
         }
 
         public void Update()
         {
-            if (timer % 15000 == 0)
-            {
-                snake.Move();
-                snake.Draw();
-                snake.CheckOver(map);
-                snake.CheckFood(food);
-                timer = 0;
-            }
-
-            timer++;
-            CheckInput();
+            Thread.Sleep(snake.MoveInterval);
+            snake.Move();
+            snake.Draw();
+            snake.CheckOver(map);
+            snake.CheckFood(food);
         }
 
         private void CheckInput()
         {
-            if (!Console.KeyAvailable) return;
-            switch (Console.ReadKey(true).Key)
+            while (true)
             {
-                case ConsoleKey.W:
-                    snake.ChangeDir(EMoveDirType.Up);
-                    break;
-                case ConsoleKey.A:
-                    snake.ChangeDir(EMoveDirType.Left);
-                    break;
-                case ConsoleKey.S:
-                    snake.ChangeDir(EMoveDirType.Down);
-                    break;
-                case ConsoleKey.D:
-                    snake.ChangeDir(EMoveDirType.Right);
-                    break;
+                switch (Console.ReadKey(true).Key)
+                {
+                    case ConsoleKey.W:
+                        snake.ChangeDir(EMoveDirType.Up);
+                        break;
+                    case ConsoleKey.A:
+                        snake.ChangeDir(EMoveDirType.Left);
+                        break;
+                    case ConsoleKey.S:
+                        snake.ChangeDir(EMoveDirType.Down);
+                        break;
+                    case ConsoleKey.D:
+                        snake.ChangeDir(EMoveDirType.Right);
+                        break;
+                    case ConsoleKey.Spacebar:
+                        snake.MoveInterval = snake.MoveInterval == 500 ? 200 : 500;
+                        break;
+                }
             }
+            // ReSharper disable once FunctionNeverReturns
         }
     }
 }

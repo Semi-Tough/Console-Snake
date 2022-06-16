@@ -68,7 +68,7 @@ namespace Console_Snake
                     SetOptionsText();
                 }
                     break;
-                case ConsoleKey.J:
+                case ConsoleKey.Enter:
                     EnterOption();
                     break;
             }
